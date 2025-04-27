@@ -1,13 +1,54 @@
-const sampleObj = {
-    JAVA: "import java.util.Scanner;\n\npublic class Main {\n    public static String preprocess(String s) {\n        return s.replaceAll(\"[^a-zA-Z0-9]\", \"\").toLowerCase();\n    }\n\n    public static boolean isPalindrome(String s) {\n        s = preprocess(s);\n        int left = 0, right = s.length() - 1;\n\n        while (left < right) {\n            if (s.charAt(left) != s.charAt(right)) return false;\n            left++;\n            right--;\n        }\n\n        return true;\n    }\n\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String input = sc.nextLine();\n\n        boolean result = isPalindrome(input);\n        System.out.println(result ? \"true\" : \"false\");\n    }\n}",
-    PYTHON: "class Solution:\n    def isPalindrome(self, s: str) -> bool:\n        # Convert to lowercase and keep only alphanumeric characters\n        filtered_chars = [c.lower() for c in s if c.isalnum()]\n\n        # Check if it's a palindrome\n        return filtered_chars == filtered_chars[::-1]\n\n# Input parsing\nif __name__ == \"__main__\":\n    import sys\n    s = sys.stdin.readline().strip()\n\n    sol = Solution()\n    result = sol.isPalindrome(s)\n\n    print(str(result).lower())",
-    JAVASCRIPT: "/**\n * @param {string} s\n * @return {boolean}\n */\nfunction isPalindrome(s) {\n  // Convert to lowercase and remove non-alphanumeric characters\n  s = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n\n  // Check if it's a palindrome\n  let left = 0;\n  let right = s.length - 1;\n\n  while (left < right) {\n    if (s[left] !== s[right]) {\n      return false;\n    }\n    left++;\n    right--;\n  }\n\n  return true;\n}\n\n// Add readline for dynamic input handling\nconst readline = require('readline');\nconst rl = readline.createInterface({\n  input: process.stdin,\n  output: process.stdout,\n  terminal: false\n});\n\n// Process input line\nrl.on('line', (line) => {\n  const result = isPalindrome(line);\n  console.log(result ? \"true\" : \"false\");\n  rl.close();\n});"
+const data = `{
+    "title": "Add Two Numbers",
+    "description": "Given two numbers a and b add them up and return the outout",
+    "difficulty": "EASY",
+    "tags": [
+        "math",
+        "operators",
+        "addition"
+    ],
+    "examples": {
+        "PYTHON": {
+            "input": "3 7",
+            "output": "10",
+            "explanation": "Adding 3 and 7 gives 10."
+        },
+        "JAVASCRIPT": {
+            "input": "-5 12",
+            "output": "7",
+            "explanation": "Adding -5 and 12 gives 7."
+        }
+    },
+    "constraints": "-10^9 ≤ a, b ≤ 10^9",
+    "testcases": [
+        {
+            "input": "100 200",
+            "output": "300"
+        },
+        {
+            "input": "-500 -600",
+            "output": "-1100"
+        },
+        {
+            "input": "0 0",
+            "output": "0"
+        }
+    ],
+    "codeSnippets": {
+        "JAVASCRIPT": "const readline = require('readline');\n\nfunction addTwoNumbers(a, b) {\n    // Write your code here\n    // Return the sum of a and b\n}\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nlet inputLines = [];\n\nrl.on('line', (line) => {\n    inputLines = line.split(' ');\n    rl.close();\n}).on('close', () => {\n    const a = parseInt(inputLines[0], 10);\n    const b = parseInt(inputLines[1], 10);\n    console.log(addTwoNumbers(a, b));\n});",
+        "PYTHON": "def add_two_numbers(a, b):\n    # Write your code here\n    # Return the sum of a and b\n    pass\n\nimport sys\ninput_line = sys.stdin.read()\na, b = map(int, input_line.split())\nprint(add_two_numbers(a, b))",
+        "JAVA": "import java.util.Scanner;\n\npublic class Main {\n    public static int addTwoNumbers(int a, int b) {\n        // Write your code here\n        // Return the sum of a and b\n        return 0;\n    }\n\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int a = sc.nextInt();\n        int b = sc.nextInt();\n        System.out.println(addTwoNumbers(a, b));\n    }\n}"
+    },
+    "referenceSolutions": {
+        "JAVASCRIPT": "const readline = require('readline');\n\nconst rl = readline.createInterface({\n    input: process.stdin,\n    output: process.stdout\n});\n\nlet inputLines = [];\n\nrl.on('line', (line) => {\n    inputLines = line.split(' ');\n    rl.close();\n}).on('close', () => {\n    const a = parseInt(inputLines[0], 10);\n    const b = parseInt(inputLines[1], 10);\n    console.log(a + b);\n});",
+        "PYTHON": "import sys\ninput_line = sys.stdin.read()\na, b = map(int, input_line.split())\nprint(a + b)",
+        "JAVA": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int a = sc.nextInt();\n        int b = sc.nextInt();\n        System.out.println(a + b);\n    }\n}"
+    }
 }
+`
 
+const input = fs.readFileSync(0, 'utf-8').trim();
+const [a, b] = input.split(' ').map(Number);
 
+`const fs = require('fs');\n\nfunction addTwoNumbers(a, b) {\n    // Write your code here\n    // Return the sum of a and b\n    return a + b;\n}\n\n// Reading input from stdin (using fs to read all input)\nconst input = fs.readFileSync(0, 'utf-8').trim();\nconst [a, b] = input.split(' ').map(Number);\n\nconsole.log(addTwoNumbers(a, b))`
 
-for(const [language , solutionCode] of Object.entries(sampleObj)){
-    console.log(`Language: ${language}`);
-    console.log(`Code:\n${solutionCode}`);
-    console.log('-----------------------------------');    
-}   
